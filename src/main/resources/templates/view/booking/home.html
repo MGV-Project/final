@@ -4,12 +4,14 @@
     <style></style>
     <script>
         $(() => {
-            let currentStepIndex = 0;
-            setInterval(() => {
-                $(`#step${currentStepIndex}`).hide();
-                currentStepIndex = (++currentStepIndex) % 3;
-                $(`#step${currentStepIndex}`).show();
-            }, 2000);
+            $(`#step0`).hide();
+            $(`#step1`).show();
+            // let currentStepIndex = 0;
+            // setInterval(() => {
+            //     $(`#step${currentStepIndex}`).hide();
+            //     currentStepIndex = (++currentStepIndex) % 3;
+            //     $(`#step${currentStepIndex}`).show();
+            // }, 2000);
         });
     </script>
 </head>

@@ -20,7 +20,7 @@ spring:
 mybatis:
   mapper-locations:
     - mapper/*/*.xml
-    - mapper/*.xml
+    - mapper.movie/*.xml
   type-aliases-package: kr.co.mgv
   configuration:
     jdbc-type-for-null: 'NULL'
