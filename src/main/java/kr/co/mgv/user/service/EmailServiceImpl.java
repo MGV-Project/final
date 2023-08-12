@@ -23,8 +23,8 @@ public class EmailServiceImpl implements EmailService {
     // 메일 내용 작성
     @Override
     public MimeMessage createMessage(String to) throws MessagingException, UnsupportedEncodingException {
-    //		System.out.println("보내는 대상 : " + to);
-    //		System.out.println("인증 번호 : " + authNumber);
+    //		log.info("보내는 대상 : " + to);
+    //		log.info("인증 번호 : " + authNumber);
 
         MimeMessage message = javaMailSender.createMimeMessage();
 

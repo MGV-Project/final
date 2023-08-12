@@ -94,16 +94,7 @@ $(() => {
     $("input[name=email]").keyup(() => {
         const $email = $(".join-form input[name='email']");
         const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        /*if (!$email.val()) {
-            $("#email-error-text").text("이메일을 입력하세요.").css('color', 'red');
-            return  false;
-        }
-        if (!emailReg.test($email.val())) {
-            $("#email-error-text").text("이메일 형식에 올바르지 않습니다.").css('color', 'red');
-            return  false;
-        } else {
-            $("#email-error-text").text("올바른 이메일 형식입니다.").css('color', 'lightgreen');
-        }*/
+
         if (!$email.val()) {
             $("#email-error-text").text("이메일을 입력하세요.").css('color', 'red');
             $("#btnCheckMail").show();
