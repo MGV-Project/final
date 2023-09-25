@@ -12913,6 +12913,9 @@ body.body-iframe .modal-layer {
 .inner-wrap {
     width: 1100px;
     margin: 0 auto;
+}
+
+#footer .inner-wrap {
     margin-top: 50px;
 }
 
