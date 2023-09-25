@@ -9,21 +9,6 @@
         <div class="my-mgv-info">
             <!-- top -->
             <div class="top2">
-                <!-- <div class="mbclass" id="myPhoto">
-                  <div class="wrap">
-                    <form name="fileForm" style="display: none;">
-                      <input type="file"   name="file">
-                      <input type="hidden" name="fileMbNo" value="13709053" />
-                    </form>
-
-                    <i class="iconset ico-add-photo"></i>
-
-                    <button type="button" class="img">
-                      <img src="" alt="" onerror="noImg(this, 'human')" />
-                    </button>
-                  </div>
-
-                </div> -->
                 <div class="mbimg">
                     <img th:src="${user.profileImg != null ? '/common/image/' + user.profileImg : '/images/user/profile/default.png'}"
                          data-default-src="/images/user/profile/default.png">

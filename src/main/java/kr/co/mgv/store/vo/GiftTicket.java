@@ -16,4 +16,5 @@ public class GiftTicket {
     private String isUsed;
     private Date createDate;
     private Date updateDate;
+    private Date expiryDate;
 }

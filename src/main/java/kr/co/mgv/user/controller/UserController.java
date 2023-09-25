@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -213,7 +214,16 @@ public class UserController {
 
     @GetMapping("/ticket")
     public String ticketList(@AuthenticationPrincipal User user, Model model) {
-        model.addAttribute("giftTickets", orderService.getGiftTicketsByUserId(user.getId()));
+        List<GiftTicket> giftTickets = orderService.getGiftTicketsByUserId(user.getId());
+
+        for (GiftTicket ticket : giftTickets) {
+            Calendar c = Calendar.getInstance();
+            c.setTime(ticket.getCreateDate());
+            c.add(Calendar.YEAR, 1);
+            ticket.setExpiryDate(c.getTime());
+        }
+
+        model.addAttribute("giftTickets", giftTickets);
         return "view/user/ticket/list";
     }
 

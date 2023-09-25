@@ -49,25 +49,22 @@
                     <th scope="col">관람권번호</th>
                     <th scope="col">만료일시</th>
                     <th scope="col">사용여부</th>
-                    <th scope="col"></th>
+                    <th scope="col">사용일자</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:if="${giftTickets.size==0}">
+                <tr th:if="${#lists.isEmpty(giftTickets)}">
                     <td colspan="4" class="a-c">조회된 관람권 내역이 없습니다.</td>
                 </tr>
-                <tr th:id="${giftTicket.user.id}" th:each="giftTicket, t : ${giftTickets}">
+                <tr th:each="giftTicket, t : ${giftTickets}">
                     <td th:text="${giftTicket.no}"></td>
-                    <td th:text="${giftTicket.createDate.plusYears(1)}"></td>
+                    <td th:text="${#dates.format(giftTicket.createDate, 'yyyy-MM-dd')}"></td>
                     <td th:text="${giftTicket.isUsed} == 'N' ? '미사용' : '사용'"></td>
-                    <td th:text="${giftTicket.updateDate}"></td>
+                    <td th:text="${#dates.format(giftTicket.updateDate, 'yyyy-MM-dd')}"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-
-
-
     </div>
 </div>
 </html>
