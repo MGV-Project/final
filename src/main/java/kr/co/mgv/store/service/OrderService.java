@@ -29,11 +29,12 @@ public class OrderService {
     public void insertOrder(Order order) {
         orderMapper.insertOrder(order);
     }
-    public Order getOrderById(long id){
+
+    public Order getOrderById(long id) {
         return orderMapper.getOrderById(id);
     }
 
-    public void updateOrder(Order order){
+    public void updateOrder(Order order) {
         orderMapper.updateOrder(order);
     }
 
@@ -41,25 +42,25 @@ public class OrderService {
         orderMapper.deleteOrder(orderId);
     }
 
-    public void generateGiftTickets(String userId, int quantity){
-        if(quantity==0){
+    public void generateGiftTickets(String userId, int quantity) {
+        if (quantity == 0) {
             return;
         }
 
         long giftTicketNo;
 
-        Map<String,Object> params= new HashMap<>();
-        params.put("userId",userId);
-        List<Object> nos= new ArrayList<>();
-        for(int i=0; i<quantity; i++){
-            giftTicketNo=(long)Math.max((Math.random()*10),1);
-            for(int j=0; j<15; j++){
-                giftTicketNo*=10;
-                giftTicketNo+=(long)Math.max((Math.random()*10),1);
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        List<Object> nos = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            giftTicketNo = (long) Math.max((Math.random() * 10), 1);
+            for (int j = 0; j < 15; j++) {
+                giftTicketNo *= 10;
+                giftTicketNo += (long) Math.max((Math.random() * 10), 1);
             }
             nos.add(giftTicketNo);
         }
-        params.put("nos",nos);
+        params.put("nos", nos);
         giftTicketMapper.insertGiftTickets(params);
 
     }
@@ -70,7 +71,7 @@ public class OrderService {
         String[] ops = orderProductsString.split("\\+");
 
         for (String p : ops) {
-            OrderProduct orderProduct= new OrderProduct();
+            OrderProduct orderProduct = new OrderProduct();
             String[] op = p.split(",");
             Product product = productMapper.getProductByNo(Integer.parseInt(op[0]));
             int orderAmount = Integer.parseInt(op[3]);
@@ -83,8 +84,8 @@ public class OrderService {
             orderProduct.setOrderDate(order.getCreateDate());
 
 
-            Map<Product,Integer> map = new HashMap<>();
-            boolean isPackage= product.getNo()>100;
+            Map<Product, Integer> map = new HashMap<>();
+            boolean isPackage = product.getNo() > 100;
 
             list.add(orderProduct);
         }
@@ -92,9 +93,11 @@ public class OrderService {
 
     }
 
-    public List<GiftTicket> getGiftTicketsByUserId(String userId){return giftTicketMapper.getGiftTicketsByUserId(userId);}
-	public List<Order> getOrderList() {
-		// TODO Auto-generated method stub
-		return orderMapper.getOrderList();
-	}
+    public List<GiftTicket> getGiftTicketsByUserId(String userId) {
+        return giftTicketMapper.getGiftTicketsByUserId(userId);
+    }
+
+    public List<Order> getOrderList() {
+        return orderMapper.getOrderList();
+    }
 }

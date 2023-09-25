@@ -22,7 +22,8 @@
             IS_USED         as isUsed,
             CREATE_DATE     as createDate,
             UPDATE_DATE     as updateDate
-            FROM MGV_GIFT_TICKET
+        FROM
+            MGV_GIFT_TICKET
         where
             USER_ID=#{VALUE}
     </select>

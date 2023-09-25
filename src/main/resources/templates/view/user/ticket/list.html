@@ -52,12 +52,15 @@
                     <th scope="col"></th>
                 </tr>
                 </thead>
-                <tbody th:if="${giftTickets.size==0}"><tr><td colspan="4" class="a-c">조회된 관람권 내역이 없습니다.</td></tr></tbody>
-                <tbody th:if="${giftTickets.size==0}">
-                <tr>
-                    <td >1515151515</td>
-                    <td >24-01-01</td>
-                    <td >미사용</td>
+                <tbody>
+                <tr th:if="${giftTickets.size==0}">
+                    <td colspan="4" class="a-c">조회된 관람권 내역이 없습니다.</td>
+                </tr>
+                <tr th:id="${giftTicket.user.id}" th:each="giftTicket, t : ${giftTickets}">
+                    <td th:text="${giftTicket.no}"></td>
+                    <td th:text="${giftTicket.createDate.plusYears(1)}"></td>
+                    <td th:text="${giftTicket.isUsed} == 'N' ? '미사용' : '사용'"></td>
+                    <td th:text="${giftTicket.updateDate}"></td>
                 </tr>
                 </tbody>
             </table>
